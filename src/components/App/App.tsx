@@ -31,16 +31,14 @@ export default function App() {
   const totalPages: number = data?.total_pages || 0;
 
   useEffect(() => {
-    if (isSuccess && searchTerm !== '' && movies.length === 0) {
-      toast.error("No movies found for your request.");
-    }
-    if (isError) {
-      toast.error("An error occurred while fetching movies.");
-    }
-    if (!isLoading && searchTerm !== '' && movies.length === 0) {
-      toast.error("No movies found for your request.");
-    }
-  }, [isError, isLoading, isSuccess, movies.length, searchTerm]);
+  if (isError) {
+    toast.error("An error occurred while fetching movies.");
+  }
+
+  if (isSuccess && searchTerm !== '' && movies.length === 0) {
+    toast.error("No movies found for your request.");
+  }
+  }, [isError, isSuccess, movies.length, searchTerm]);
 
   const handleSearch = (query: string) => {
     setSearchTerm(query);
