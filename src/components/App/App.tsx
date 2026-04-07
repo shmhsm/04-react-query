@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import toast, { Toaster } from 'react-hot-toast';
 
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../ReactPaginate/Pagination';
 import SearchBar from '../SearchBar/SearchBar';
 import MovieGrid from '../MovieGrid/MovieGrid';
 import Loader from '../Loader/Loader';
@@ -60,8 +60,8 @@ export default function App() {
         <>
           {totalPages > 1 && (
             <Pagination 
-              totalPages={totalPages > 500 ? 500 : totalPages}
-              currentPage={page}
+              pageCount={totalPages > 500 ? 500 : totalPages}
+              forcePage={page}
               onPageChange={(nextPage: number) => setPage(nextPage)}
             />
           )}
