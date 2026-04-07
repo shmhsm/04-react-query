@@ -60,9 +60,9 @@ export default function App() {
         <>
           {totalPages > 1 && (
             <Pagination 
-              pageCount={totalPages > 500 ? 500 : totalPages}
-              forcePage={page}
-              onPageChange={(nextPage: number) => setPage(nextPage)}
+              totalPages={totalPages > 500 ? 500 : totalPages}
+              page={page}
+              setPage={setPage}
             />
           )}
           <MovieGrid movies={movies} onSelect={setSelectedMovie} />
